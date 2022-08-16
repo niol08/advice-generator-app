@@ -15,14 +15,19 @@ const useFetch = (url) => {
     }
   }, [url])
   useEffect(() => {
+    getQuote()
+  }, [getQuote])
+
+  useEffect(() => {
     const interval = setInterval(() => {
       getQuote()
     }, 30000)
     return () => {
       clearInterval(interval)
     }
-  }, [url, getQuote])
-  return { loading, quote }
+  }, [url, getQuote, quote])
+
+  return { loading, quote, getQuote }
 }
 
 export default useFetch

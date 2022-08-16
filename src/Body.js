@@ -5,7 +5,7 @@ import dice from "./images/icon-dice.svg"
 import "./index.css"
 const url = "https://api.adviceslip.com/advice"
 const Body = () => {
-  const { loading, quote } = useFetch(url)
+  const { loading, quote, getQuote } = useFetch(url)
   if (!loading) {
     return (
       <article className='wrapper'>
@@ -15,7 +15,12 @@ const Body = () => {
         </p>
         <div className='img-parent'></div>
         <div className='parent'>
-          <div className='dice-container'>
+          <div
+            className='dice-container'
+            onClick={() => {
+              getQuote()
+            }}
+          >
             <img src={dice} alt='dice-img' className='dice' />
           </div>
         </div>
